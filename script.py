@@ -13,7 +13,12 @@ def match_type(user_input):
     for type in types:
         if type.startswith(user_input):
             matches.append(type)
-
+    if not matches:
+        try_again= ("We couldn't find any matches for your input. Would you like to try again? Enter y/n:\n> ")
+        if try_again == 'y':
+            get_user_input()
+        else:
+            goodbye()
     return matches
 
 def verify_match(matches):
@@ -57,3 +62,5 @@ def main():
     matches= match_type(user_input)
     match= verify_match(matches)
     show_restaurants(match)
+
+main()
